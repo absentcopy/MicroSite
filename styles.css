@@ -83,9 +83,51 @@ body.honeydew-body {
   display: block;
 }
 
+.hero-3d-root::after {
+  content: "";
+  position: absolute;
+  inset: -40px;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.28;
+  mix-blend-mode: soft-light;
+  background-image:
+    radial-gradient(circle at 0 0, rgba(0, 0, 0, 0.12) 0, transparent 55%),
+    radial-gradient(circle at 100% 0, rgba(0, 0, 0, 0.08) 0, transparent 55%),
+    radial-gradient(circle at 0 100%, rgba(0, 0, 0, 0.06) 0, transparent 55%),
+    radial-gradient(circle at 100% 100%, rgba(0, 0, 0, 0.1) 0, transparent 55%);
+  background-size: 260px 260px, 260px 260px, 260px 260px, 260px 260px;
+  animation: hero-grain 8s steps(10) infinite;
+}
+
 .hero-content {
   position: relative;
   z-index: 2;
+}
+
+.hero-card {
+  max-width: 720px;
+  margin-inline: auto;
+}
+
+.status-card {
+  border-radius: 0.9rem;
+  border: 1px solid rgba(255, 111, 168, 0.4);
+  background: linear-gradient(
+    135deg,
+    rgba(232, 255, 244, 0.95),
+    rgba(255, 211, 230, 0.9)
+  );
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.08);
+}
+
+body.honeydew-night .status-card {
+  background: linear-gradient(
+    135deg,
+    rgba(15, 23, 42, 0.96),
+    rgba(30, 64, 175, 0.7)
+  );
+  border-color: rgba(248, 250, 252, 0.35);
 }
 
 .glassy-card {
@@ -248,6 +290,44 @@ body.honeydew-body {
   background: #fff;
 }
 
+.control-panel {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 3.5rem;
+  z-index: 1035;
+  width: 220px;
+  padding: 0.6rem 0.7rem 0.7rem;
+  border-radius: 0.9rem;
+  border: 1px solid var(--border-soft);
+  background: rgba(255, 255, 255, 0.96);
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+  transition: opacity 120ms ease-out, transform 120ms ease-out;
+}
+
+.control-panel .form-label-sm {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+.control-panel .form-range-sm {
+  height: 0.75rem;
+}
+
+body.controls-open .control-panel {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+body.honeydew-night .control-panel {
+  background: rgba(15, 23, 42, 0.97);
+  border-color: rgba(148, 163, 184, 0.6);
+  color: #e5e7eb;
+}
+
 body.honeydew-body.honeydew-night {
   background: radial-gradient(
     circle at top left,
@@ -287,6 +367,48 @@ body.honeydew-night .link-label {
 body.honeydew-night .blog-body,
 body.honeydew-night .blog-meta {
   color: #e5e7eb;
+}
+
+.hero-status-bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+  padding: 0.4rem 0;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.88),
+    rgba(232, 255, 244, 0.98)
+  );
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+body.honeydew-night .hero-status-bar {
+  background: linear-gradient(
+    180deg,
+    rgba(15, 23, 42, 0.96),
+    rgba(17, 24, 39, 0.98)
+  );
+  border-top-color: rgba(30, 64, 175, 0.6);
+}
+
+@keyframes hero-grain {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  25% {
+    transform: translate3d(-10px, 6px, 0);
+  }
+  50% {
+    transform: translate3d(6px, -8px, 0);
+  }
+  75% {
+    transform: translate3d(-4px, 10px, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 .scroll-cue {
