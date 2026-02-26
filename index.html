@@ -68,7 +68,8 @@
     <!-- Hero -->
     <main class="flex-grow-1">
       <section id="hero" class="py-5 hero-section">
-        <div class="container">
+        <div id="hero3dRoot" class="hero-3d-root"></div>
+        <div class="container hero-content">
           <div class="row align-items-center gy-4">
             <div class="col-lg-6">
               <h1 class="display-5 fw-bold mb-3">
@@ -76,7 +77,8 @@
               </h1>
               <p class="lead mb-4">
                 A playful micro&nbsp;site for experiments, half-baked ideas,
-                and things I’m building. Powered by Bootstrap.
+                and things I’m building. Powered by Bootstrap, colored in
+                honeydew and pink.
               </p>
               <div class="d-flex flex-wrap gap-3">
                 <a href="#projects" class="btn btn-pink">
@@ -103,6 +105,14 @@
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+        <div class="scroll-cue" aria-hidden="true">
+          <div class="mouse-shell">
+            <div class="mouse-wheel"></div>
+          </div>
+          <div class="scroll-arrow-label">
+            Scroll for more
           </div>
         </div>
       </section>
@@ -262,6 +272,9 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
+
+    <!-- Three.js for hero 3D solid -->
+    <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
 
     <!-- App script -->
     <script src="main.js"></script>

@@ -61,8 +61,31 @@ body.honeydew-body {
 }
 
 .hero-section {
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
   padding-top: 4rem;
   padding-bottom: 4rem;
+  overflow: hidden;
+}
+
+.hero-3d-root {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-3d-root canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
 }
 
 .glassy-card {
@@ -264,6 +287,71 @@ body.honeydew-night .link-label {
 body.honeydew-night .blog-body,
 body.honeydew-night .blog-meta {
   color: #e5e7eb;
+}
+
+.scroll-cue {
+  position: absolute;
+  left: 50%;
+  bottom: 1.5rem;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  z-index: 2;
+}
+
+.mouse-shell {
+  width: 22px;
+  height: 34px;
+  border-radius: 999px;
+  border: 2px solid rgba(0, 0, 0, 0.35);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 6px;
+}
+
+.mouse-wheel {
+  width: 3px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.55);
+  animation: mouse-wheel 1.6s ease-in-out infinite;
+}
+
+.scroll-arrow-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+@keyframes mouse-wheel {
+  0% {
+    opacity: 0;
+    transform: translateY(-3px);
+  }
+  35% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+}
+
+body.honeydew-night .mouse-shell {
+  border-color: rgba(248, 250, 252, 0.7);
+}
+
+body.honeydew-night .mouse-wheel {
+  background: rgba(248, 250, 252, 0.85);
+}
+
+body.honeydew-night .scroll-arrow-label {
+  color: rgba(248, 250, 252, 0.7);
 }
 
 

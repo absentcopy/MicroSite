@@ -82,5 +82,94 @@
         if (blogMetaEl) blogMetaEl.textContent = "Error loading posts";
       });
   }
+
+  const heroRoot = document.getElementById("hero3dRoot");
+
+  if (heroRoot && window.THREE) {
+    const scene = new THREE.Scene();
+
+    const camera = new THREE.PerspectiveCamera(
+      45,
+      heroRoot.clientWidth / Math.max(heroRoot.clientHeight, 1),
+      0.1,
+      100
+    );
+    camera.position.z = 3.2;
+
+    const renderer = new THREE.WebGLRenderer({
+      antialias: true,
+      alpha: true,
+    });
+    renderer.setPixelRatio(window.devicePixelRatio || 1);
+    renderer.setSize(heroRoot.clientWidth, Math.max(heroRoot.clientHeight, 1));
+    heroRoot.appendChild(renderer.domElement);
+
+    const geometry = new THREE.IcosahedronGeometry(1.2, 0);
+    const material = new THREE.MeshStandardMaterial({
+      color: 0xff6fa8,
+      emissive: 0x442233,
+      roughness: 0.2,
+      metalness: 0.4,
+      flatShading: true,
+    });
+
+    const solid = new THREE.Mesh(geometry, material);
+    scene.add(solid);
+
+    const keyLight = new THREE.PointLight(0xffffff, 1.3);
+    keyLight.position.set(3, 4, 5);
+    scene.add(keyLight);
+
+    const rimLight = new THREE.PointLight(0xffd3e6, 0.7);
+    rimLight.position.set(-4, -3, -2);
+    scene.add(rimLight);
+
+    const ambient = new THREE.AmbientLight(0xffffff, 0.4);
+    scene.add(ambient);
+
+    let pointerX = 0;
+    let pointerY = 0;
+
+    function updatePointer(e) {
+      const rect = heroRoot.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width;
+      const y = (e.clientY - rect.top) / rect.height;
+
+      pointerX = (x - 0.5) * 2;
+      pointerY = (y - 0.5) * 2;
+    }
+
+    window.addEventListener("pointermove", updatePointer);
+
+    function handleResize() {
+      const w = heroRoot.clientWidth || 1;
+      const h = heroRoot.clientHeight || 1;
+
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+      renderer.setSize(w, h);
+    }
+
+    window.addEventListener("resize", handleResize);
+
+    let rotationBase = 0;
+
+    function animate() {
+      requestAnimationFrame(animate);
+
+      rotationBase += 0.01;
+
+      solid.rotation.x = rotationBase + pointerY * 0.4;
+      solid.rotation.y = rotationBase * 1.4 + pointerX * 0.6;
+
+      solid.position.x = pointerX * 0.45;
+      solid.position.y = -pointerY * 0.35;
+
+      renderer.render(scene, camera);
+    }
+
+    handleResize();
+    animate();
+  }
 })();
 
