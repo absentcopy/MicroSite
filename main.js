@@ -89,7 +89,8 @@
   const blogMetaEl = document.getElementById("blogMeta");
 
   if (blogListEl) {
-    fetch("blog.json", { cache: "no-cache" })
+    const blogJsonUrl = (location.pathname.replace(/\/?$/, "/") + "blog.json");
+    fetch(blogJsonUrl, { cache: "no-cache" })
       .then((res) => {
         if (!res.ok) throw new Error("Failed to load blog.json");
         return res.json();
