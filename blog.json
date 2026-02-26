@@ -12,6 +12,13 @@
     "date": "2026-02-26",
     "tags": ["process"],
     "body": "Instead of long, polished essays, think of each post as a small plant.\nYou can come back, prune, rewrite, or delete whenever you like.\n\nJSON makes it easy to rearrange, tag, or archive posts later."
+  },
+  {
+    "id": "honeydew-changelog",
+    "title": "Building the Honeydew Microsite",
+    "date": "2026-02-26",
+    "tags": ["changelog", "meta", "fun"],
+    "body": "This site started as a bare repo and turned into a honeydew-themed playground.\n\nWhat we added so far:\n- A Bootstrap-powered layout with sections for projects, links, and a JSON-backed blog.\n- A Three.js hero scene where low-poly solids fall and roll \"downhill\" behind the content, with cursor pushback, lighting, grain, and adjustable motion blur.\n- A floating control panel that lets you tweak how many shapes are on screen and how fast they move, plus a manual light/dark theme toggle.\n- A live status bar at the bottom of the hero that pulls fresh headlines from r/collapse, truncates them, and links out to the original threads.\n\nThe plan is to keep treating this as a tiny lab: ship weird ideas, wire up odd data sources, and let the UI drift toward whatever feels interesting next."
   }
 ]
 
