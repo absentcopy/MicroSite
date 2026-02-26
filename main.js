@@ -40,7 +40,10 @@
       try {
         const res = await fetch(
           "https://www.reddit.com/r/collapse/.json?limit=25",
-          { cache: "no-store" }
+          {
+            cache: "no-store",
+            headers: { "User-Agent": "MicroSite/1.0 (https://github.com/absentcopy/MicroSite)" },
+          }
         );
         if (!res.ok) throw new Error("Bad response");
         const data = await res.json();
