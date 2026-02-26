@@ -1,0 +1,17 @@
+[
+  {
+    "id": "hello-honeydew",
+    "title": "Hello, honeydew world",
+    "date": "2026-02-26",
+    "tags": ["meta", "setup"],
+    "body": "First post! This is a tiny JSON-powered blog living inside a microsite.\nYou can edit this file directly to add new entries.\n\nThe goal: keep things light, playful, and easy to change without touching HTML."
+  },
+  {
+    "id": "idea-garden",
+    "title": "Treat this as an idea garden",
+    "date": "2026-02-26",
+    "tags": ["process"],
+    "body": "Instead of long, polished essays, think of each post as a small plant.\nYou can come back, prune, rewrite, or delete whenever you like.\n\nJSON makes it easy to rearrange, tag, or archive posts later."
+  }
+]
+
