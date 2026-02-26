@@ -3,8 +3,8 @@
   if (statusLineEl) {
     const fallbackLines = [
       {
-        title: "This site is a sandbox. Expect broken things, strange experiments, and the occasional delightful bug.",
-        url: "",
+        title: "Change your mood with just one click!",
+        url: "https://www.reddit.com/r/collapse/",
       },
       {
         title: "Internet mood: gently chaotic, frequently confusing, occasionally wonderful.",
