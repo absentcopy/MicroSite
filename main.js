@@ -21,6 +21,18 @@
       return text.slice(0, max - 1).trimEnd() + "…";
     }
 
+    function escapeHtml(str) {
+      const div = document.createElement("div");
+      div.textContent = str;
+      return div.innerHTML;
+    }
+
+    function isSafeUrl(url) {
+      if (!url || typeof url !== "string") return false;
+      const u = url.trim().toLowerCase();
+      return u.startsWith("https://") || u.startsWith("http://");
+    }
+
     function renderLine() {
       const pool = headlines.length ? headlines : fallbackLines;
       if (!pool.length) return;
@@ -28,11 +40,11 @@
       index += 1;
 
       const text = truncate(item.title || "", 110);
-      if (!item.url) {
+      const safeText = escapeHtml(text);
+      if (!item.url || !isSafeUrl(item.url)) {
         statusLineEl.textContent = text;
       } else {
-        const safeHref = item.url;
-        statusLineEl.innerHTML = `<a href="${safeHref}" target="_blank" rel="noopener noreferrer" class="link-pink">${text}</a>`;
+        statusLineEl.innerHTML = `<a href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer" class="link-pink">${safeText}</a>`;
       }
     }
 
@@ -92,8 +104,7 @@
   const blogMetaEl = document.getElementById("blogMeta");
 
   if (blogListEl) {
-    const blogJsonUrl = (location.pathname.replace(/\/?$/, "/") + "blog.json");
-    fetch(blogJsonUrl, { cache: "no-cache" })
+    fetch("blog.json", { cache: "no-cache" })
       .then((res) => {
         if (!res.ok) throw new Error("Failed to load blog.json");
         return res.json();
