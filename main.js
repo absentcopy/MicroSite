@@ -7,8 +7,8 @@
         url: "https://www.reddit.com/r/collapse/",
       },
       {
-        title: "Internet mood: gently chaotic, frequently confusing, occasionally wonderful.",
-        url: "",
+        title: "Or Something Fun!",
+        url: "https://www.thebeaverton.com/",
       },
     ];
 
