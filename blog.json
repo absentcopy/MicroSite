@@ -19,6 +19,13 @@
     "date": "2026-02-26",
     "tags": ["changelog", "meta", "fun"],
     "body": "This site started as a bare repo and turned into a honeydew-themed playground.\n\nWhat we added so far:\n- A Bootstrap-powered layout with sections for projects, links, and a JSON-backed blog.\n- A Three.js hero scene where low-poly solids fall and roll \"downhill\" behind the content, with cursor pushback, lighting, grain, and adjustable motion blur.\n- A floating control panel that lets you tweak how many shapes are on screen and how fast they move, plus a manual light/dark theme toggle.\n- A live status bar at the bottom of the hero that pulls fresh headlines from r/collapse, truncates them, and links out to the original threads.\n\nThe plan is to keep treating this as a tiny lab: ship weird ideas, wire up odd data sources, and let the UI drift toward whatever feels interesting next."
+  },
+  {
+    "id": "cursor-credits",
+    "title": "Cursor credits & how to use the program and agents",
+    "date": "2026-02-26",
+    "tags": ["meta", "cursor", "workflow"],
+    "body": "A quick reference for how Cursor credits work and how to get the most out of the editor and agents.\n\nWhat are credits?\n- Cursor uses a credit system for AI features: chat, Composer, and agent runs. Your plan (Free, Pro, etc.) gives you a monthly allowance; once you run low, some features are throttled or restricted until the next cycle.\n- Fast, small edits cost fewer credits than long agent runs or big Composer sessions. Be specific in your prompts, keep tasks scoped, and use the model that fits the job.\n\nWhat you should do when using Cursor and agents:\n- Be clear about what you want: \"add a button that does X\" or \"fix the Reddit fetch\" beats \"make it better.\" More context and a clear goal mean less back-and-forth and fewer wasted turns.\n- Point at the right place: use @filename or @folder so the agent knows which files to read and edit.\n- Prefer small, testable steps for big features: break \"add auth\" into \"add login form,\" \"wire submit to API,\" etc. Better diffs, easier rollbacks, fewer credits per step.\n- Use the right tool: quick questions or single-file edits use chat or inline edit; multi-file refactors or \"build a feature\" use Composer or an agent. Don't spin up an agent for a one-line change.\n- Review before accepting: skim edits before you accept. Fixing a wrong edit costs extra credits; catching it early doesn't.\n- If something breaks: say so clearly and where it breaks (e.g. browser console, which page) so the agent can target the fix.\n\nTL;DR: use credits where they matter, give clear instructions and context, keep changes scoped, and review edits."
   }
 ]
 

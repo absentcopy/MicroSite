@@ -3,12 +3,12 @@
   if (statusLineEl) {
     const fallbackLines = [
       {
-        title: "Change your mood with just one click!",
-        url: "https://www.reddit.com/r/collapse/",
+        title: "This site is a sandbox. Expect broken things, strange experiments, and the occasional delightful bug.",
+        url: "",
       },
       {
-        title: "Or Something Fun!",
-        url: "https://www.thebeaverton.com/",
+        title: "Live headlines load from r/collapse when the feed is available.",
+        url: "https://www.reddit.com/r/collapse/",
       },
     ];
 
@@ -50,15 +50,12 @@
 
     async function fetchHeadlines() {
       try {
-        const res = await fetch(
-          "https://www.reddit.com/r/collapse/.json?limit=25",
-          {
-            cache: "no-store",
-            headers: { "User-Agent": "MicroSite/1.0 (https://github.com/absentcopy/MicroSite)" },
-          }
-        );
+        const redditUrl = "https://www.reddit.com/r/collapse/.json?limit=25";
+        const proxyUrl = "https://api.allorigins.win/raw?url=" + encodeURIComponent(redditUrl);
+        const res = await fetch(proxyUrl, { cache: "no-store" });
         if (!res.ok) throw new Error("Bad response");
-        const data = await res.json();
+        const text = await res.text();
+        const data = JSON.parse(text);
         const children =
           data && data.data && Array.isArray(data.data.children)
             ? data.data.children
@@ -83,7 +80,7 @@
           headlines.push(h);
         });
       } catch {
-        // fall back to local lines
+        // fall back to local lines (e.g. CORS or network error)
       }
     }
 
